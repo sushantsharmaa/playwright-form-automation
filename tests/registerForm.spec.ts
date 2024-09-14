@@ -15,12 +15,15 @@ test.describe('Validations and Submissions for Registration Form', () => {
     }
   });
 
-  test('Fill out registration form with valid inputs', async ({ page }) => {
-    await page.pause();
+  test('Fill out registration form with valid inputs', async () => {
     await registerPO.fillName();
     await registerPO.fillEmail();
     await registerPO.fillPassword();
     await registerPO.fillConfirmPassword();
     await registerPO.fillDateOfBirth();
+    await registerPO.selectGender();
+    await registerPO.selectCountry();
+    await registerPO.selectInterests();
+    await registerPO.acceptTermsAndConditions();
   });
 });
