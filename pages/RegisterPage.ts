@@ -4,6 +4,7 @@ import {
   type Locator,
   type FrameLocator,
 } from '@playwright/test';
+import { userData } from '../fixtures/userData';
 
 export class RegisterPageObject {
   readonly page: Page;
@@ -46,33 +47,37 @@ export class RegisterPageObject {
   }
 
   async fillName() {
-    await this.nameField.fill('Sushant');
+    await this.nameField.fill(userData.name);
   }
 
   async fillEmail() {
-    await this.emailField.fill('sushant@gmail.com');
+    await this.emailField.fill(userData.email);
   }
 
   async fillPassword() {
-    await this.passwordField.fill('Sush@nt123');
+    await this.passwordField.fill(userData.password);
   }
 
   async fillConfirmPassword() {
-    await this.confirmPasswordField.fill('Sush@nt123');
+    await this.confirmPasswordField.fill(userData.confirmPassword);
   }
 
   async fillDateOfBirth() {
-    await this.dobField.fill('1996-09-02');
+    await this.dobField.fill(userData.dob);
   }
 
   async selectGender() {
-    await this.genderField.selectOption('Male');
-    await expect(this.genderField).toHaveValue('male');
+    await this.genderField.selectOption(userData.gender);
+    await expect(this.genderField).toHaveValue(
+      userData.gender.toLocaleLowerCase()
+    );
   }
 
   async selectCountry() {
-    await this.countryField.selectOption('USA');
-    await expect(this.countryField).toHaveValue('usa');
+    await this.countryField.selectOption(userData.country);
+    await expect(this.countryField).toHaveValue(
+      userData.country.toLocaleLowerCase()
+    );
   }
 
   async selectInterests() {
