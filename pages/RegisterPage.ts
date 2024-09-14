@@ -13,6 +13,7 @@ export class RegisterPageObject {
   readonly emailField: Locator;
   readonly genderField: Locator;
   readonly countryField: Locator;
+  readonly submitButton: Locator;
   readonly passwordField: Locator;
   readonly musicCheckbox: Locator;
   readonly sportsCheckbox: Locator;
@@ -25,6 +26,7 @@ export class RegisterPageObject {
     this.dobField = frame.locator('input[name="dob"]');
     this.genderField = frame.locator('select[name="gender"]');
     this.nameField = this.frame.locator('input[name="name"]');
+    this.submitButton = frame.locator('button[type="submit"]');
     this.countryField = frame.locator('select[name="country"]');
     this.emailField = this.frame.locator('input[name="email"]');
     this.passwordField = this.frame.locator('input[name="password"]');
@@ -85,5 +87,9 @@ export class RegisterPageObject {
   async acceptTermsAndConditions() {
     await this.termAndConditionCheckbox.click();
     expect(this.termAndConditionCheckbox).toBeChecked();
+  }
+
+  async submitDetails() {
+    await this.submitButton.click();
   }
 }

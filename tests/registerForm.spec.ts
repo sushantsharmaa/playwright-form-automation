@@ -1,9 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { RegisterPageObject } from '../pages/RegisterPage';
 
-let registerPO: RegisterPageObject;
-
 test.describe('Validations and Submissions for Registration Form', () => {
+  let registerPO: RegisterPageObject;
+
   test.beforeEach(async ({ page }) => {
     await page.goto('https://onecompiler.com/html/42kh8j399');
     await page.click('text=Run');
@@ -25,5 +25,6 @@ test.describe('Validations and Submissions for Registration Form', () => {
     await registerPO.selectCountry();
     await registerPO.selectInterests();
     await registerPO.acceptTermsAndConditions();
+    await registerPO.submitDetails();
   });
 });
